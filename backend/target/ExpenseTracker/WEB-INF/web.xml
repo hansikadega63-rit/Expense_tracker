@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    
+    <display-name>Personal Expense Tracker</display-name>
+    <description>A comprehensive expense tracking and budget planning application</description>
+    
+    <!-- Expense Servlet -->
+    <servlet>
+        <servlet-name>ExpenseServlet</servlet-name>
+        <servlet-class>com.expensetracker.servlet.ExpenseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExpenseServlet</servlet-name>
+        <url-pattern>/api/expense</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Budget Servlet -->
+    <servlet>
+        <servlet-name>BudgetServlet</servlet-name>
+        <servlet-class>com.expensetracker.servlet.BudgetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BudgetServlet</servlet-name>
+        <url-pattern>/api/budget</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Income Servlet -->
+    <servlet>
+        <servlet-name>IncomeServlet</servlet-name>
+        <servlet-class>com.expensetracker.servlet.IncomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IncomeServlet</servlet-name>
+        <url-pattern>/api/income</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Savings Goal Servlet -->
+    <servlet>
+        <servlet-name>SavingsGoalServlet</servlet-name>
+        <servlet-class>com.expensetracker.servlet.SavingsGoalServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SavingsGoalServlet</servlet-name>
+        <url-pattern>/api/savingsgoal</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Dashboard Servlet -->
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.expensetracker.servlet.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/api/dashboard</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Welcome files -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Session configuration -->
+    <session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+</web-app>
