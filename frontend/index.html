@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/api.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>💰 ExpenseTracker</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Dashboard</a></li>
+                    <li><a href="add_expense.html">Add Expense</a></li>
+                    <li><a href="income.html">Income</a></li>
+                    <li><a href="budgets.html">Budgets</a></li>
+                    <li><a href="reports.html">Reports</a></li>
+                    <li><a href="savings.html">Savings Goals</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h2>Dashboard</h2>
+                <div class="month-selector">
+                    <select id="monthSelect">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select id="yearSelect">
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
+                </div>
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="summary-cards">
+                <div class="card income-card">
+                    <div class="card-icon">💵</div>
+                    <div class="card-content">
+                        <h3>Total Income</h3>
+                        <p class="amount" id="totalIncome">$0.00</p>
+                    </div>
+                </div>
+                <div class="card expense-card">
+                    <div class="card-icon">💸</div>
+                    <div class="card-content">
+                        <h3>Total Expenses</h3>
+                        <p class="amount" id="totalExpenses">$0.00</p>
+                    </div>
+                </div>
+                <div class="card savings-card">
+                    <div class="card-icon">🏦</div>
+                    <div class="card-content">
+                        <h3>Savings</h3>
+                        <p class="amount" id="totalSavings">$0.00</p>
+                    </div>
+                </div>
+                <div class="card budget-card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-content">
+                        <h3>Budget Status</h3>
+                        <p class="percentage" id="budgetPercentage">0%</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <h3>Expense by Category</h3>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Monthly Spending Trend</h3>
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Budget Alerts -->
+            <section class="alerts-section">
+                <h3>⚠️ Budget Alerts</h3>
+                <div id="budgetAlerts" class="alerts-container">
+                    <p class="no-alerts">No budget alerts</p>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="transactions-section">
+                <h3>Recent Transactions</h3>
+                <div class="table-container">
+                    <table id="transactionsTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/charts.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

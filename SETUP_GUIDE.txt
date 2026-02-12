@@ -1,0 +1,118 @@
+-- Setup guide for ExpenseTracker
+
+1. DATABASE SETUP
+================
+
+For MySQL:
+----------
+a) Create database:
+   mysql -u root -p
+   CREATE DATABASE expense_tracker;
+   USE expense_tracker;
+   SOURCE database/schema.sql;
+   SOURCE database/seed_data.sql;
+
+b) Update DatabaseConnection.java:
+   - Set DB_TYPE = "mysql"
+   - Update MYSQL_USER and MYSQL_PASSWORD
+
+For SQLite:
+-----------
+a) Just run the application, it will create the database automatically
+
+2. BUILD BACKEND
+================
+
+Prerequisites:
+- Java 11+ installed
+- Maven 3.6+ installed
+
+Commands:
+cd backend
+mvn clean install
+mvn tomcat7:run
+
+Output: http://localhost:8080/ExpenseTracker
+
+3. FRONTEND SETUP
+=================
+
+Option A: Serve via Tomcat
+- Copy all frontend files to backend/src/main/webapp/
+- They will be served as static resources
+
+Option B: Standalone
+- Open frontend/index.html in browser
+- Note: Some features work best when served via HTTP
+
+4. ACCESS APPLICATION
+=====================
+
+Open in browser:
+http://localhost:8080/ExpenseTracker/
+
+Default Pages:
+- Dashboard: http://localhost:8080/ExpenseTracker/index.html
+- Add Expense: http://localhost:8080/ExpenseTracker/add_expense.html
+- Income: http://localhost:8080/ExpenseTracker/income.html
+- Budgets: http://localhost:8080/ExpenseTracker/budgets.html
+- Reports: http://localhost:8080/ExpenseTracker/reports.html
+- Savings: http://localhost:8080/ExpenseTracker/savings.html
+
+5. TEST DATA
+============
+
+Sample data is included in seed_data.sql:
+- 30+ expense transactions
+- Multiple income records
+- Budget configurations
+- Savings goals
+
+6. TROUBLESHOOTING
+==================
+
+Issue: Database connection error
+Solution: Check MySQL is running and credentials are correct
+
+Issue: 404 on localhost:8080
+Solution: Ensure Tomcat is running and WAR is deployed
+
+Issue: API returns 404
+Solution: Check web.xml servlet mappings
+
+Issue: Charts not displaying
+Solution: Check browser console for JavaScript errors
+
+7. API TESTING
+==============
+
+Test endpoints using curl or Postman:
+
+Get all expenses:
+GET http://localhost:8080/ExpenseTracker/api/expense?action=getAll
+
+Add expense:
+POST http://localhost:8080/ExpenseTracker/api/expense?action=add
+Parameters: amount, category, date, description
+
+Get dashboard data:
+GET http://localhost:8080/ExpenseTracker/api/dashboard?action=getDashboardData
+
+8. PRODUCTION DEPLOYMENT
+=========================
+
+To deploy:
+1. Build: mvn clean package
+2. Copy ExpenseTracker.war to Tomcat webapps/
+3. Restart Tomcat
+4. Configure MySQL for production
+5. Update connection string
+
+9. NEXT STEPS
+=============
+
+- Configure MySQL user and password
+- Load sample data
+- Start Tomcat server
+- Open browser to localhost:8080/ExpenseTracker
+- Add your first expense!
